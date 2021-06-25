@@ -8,6 +8,7 @@ import {
   TeamOutlined,
   UserOutlined,
   BookOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
 import { useHistory } from "react-router";
 
@@ -38,6 +39,19 @@ const Sidebar = () => {
       >
         Members
       </Menu.Item>
+
+      <Menu.Item
+        onClick={() => {
+          history.push("/genre");
+        }}
+        key="2"
+        icon={<MenuOutlined />}
+      >
+        Genre
+      </Menu.Item>      
+
+
+
       <SubMenu key="sub1" icon={<UserOutlined />} title="User">
         <Menu.Item key="3">Tom</Menu.Item>
         <Menu.Item key="4">Bill</Menu.Item>
