@@ -21,7 +21,7 @@ const MainComponent = (props: any) => {
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: "0 16px" }}>{props.children}</Content>
         <Footer style={{ textAlign: "center" }}>
-          MUNDRE LIBARY ©2021 @ all right reserved
+          Ant Design ©2021 @ all right reserved
         </Footer>
       </Layout>
     </Layout>

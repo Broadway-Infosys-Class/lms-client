@@ -55,3 +55,9 @@
 .btn-component-wrapper {
   margin: 0 10px;
 }
+.modal-form input {
+  margin: 10px;
+}
+button.ant-btn.ant-btn-primary.ant-btn-dangerous {
+    margin-left: 30px;
+}

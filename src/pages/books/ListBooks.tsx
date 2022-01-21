@@ -19,6 +19,7 @@ const ListBooks = () => {
 
   const getAllBooks = async () => {
     const response = await axios.get("http://localhost:4099/api/books");
+    //console.log("===========",response.data); 
     setBooks(response.data.data);
   };
 
@@ -66,7 +67,9 @@ const ListBooks = () => {
   };
 
   const bookColumns = [
-    { title: "Book Title", dataIndex: "title", key: "title" },
+    { title: "Book Title",
+    dataIndex: "title",
+    key: "title" },
     {
       title: "Book Author",
       dataIndex: "author",
@@ -78,31 +81,22 @@ const ListBooks = () => {
       key: "_id",
       render: (_id: string) => (
         <div className="operation-wrapper">
-          <ButtonComponent
-            onClick={() => {
-              handleBookEdit(_id);
-            }}
-            type="primary"
-            btnText="Edit"
-          />
-
-          <ButtonComponent
-            onClick={() => {
-              handleBookDelete(_id);
-            }}
-            danger
-            type="primary"
-            btnText="Delete"
-          />
+          <Button onClick={() => {handleBookEdit(_id)}} type="primary">Edit</Button>
+          {/* <ButtonComponent onClick={() => {handleBookEdit(_id);}} type="primary" btnText="Edit"/> */}
+          <Button onClick={() => {handleBookDelete(_id)}} danger type="primary">Delete</Button>
+          {/* <ButtonComponent onClick={() => {handleBookDelete(_id);}} danger type="primary" btnText="Delete"/> */}
         </div>
       ),
     },
   ];
 
-  const handleClickAddButton = (event: any) => {
+
+ const handleClickAddButton = (event: any) => {
     event.persist();
     setShowModal(true);
   };
+
+
 
   useEffect(() => {
     getAllBooks();
@@ -111,11 +105,16 @@ const ListBooks = () => {
   return (
     <MainComponent>
       <CustomBereadcrumb items={["Books"]} />
-      <TitleComponent
-        title="Book List"
-        addButton="Add Book"
-        addBtnClickFunction={handleClickAddButton}
-      />
+      {/* <div className="title-wrapper">
+      <h3>Welcome to Book List</h3>
+      <Button onClick={handleClickAddButton} type="primary">
+        Add Book
+      </Button>
+      </div> this is copied to custombreadcrumbs and modified there so that component
+      can be used in multiple pages and we dont have rewrite code every time we need to use that component*/}
+      <TitleComponent title="Welcome to Book List" 
+      addButton="Add Book"
+      addBtnClickFunction={handleClickAddButton}/>
       <Table dataSource={books} columns={bookColumns} />
       <br />
       <Modal
@@ -124,21 +123,21 @@ const ListBooks = () => {
         onOk={handleFormSubmit}
         onCancel={handleCancel}
       >
+        
         <div className="modal-form">
-          <Input
-            onChange={handleInputChange}
+          <Input onChange={handleInputChange}
             value={newBook.title}
             type="text"
             name="title"
-            placeholder="Enter Book Name"
-          />
-          <Input
-            onChange={handleInputChange}
+            placeholder="Enter Book Name" 
+           />
+      
+          <Input onChange={handleInputChange}
             value={newBook.author}
             type="text"
             name="author"
-            placeholder="Enter Author Name"
-          />
+            placeholder="Enter Author Name" 
+            />
         </div>
       </Modal>
     </MainComponent>

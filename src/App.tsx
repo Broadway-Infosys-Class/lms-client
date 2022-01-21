@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/books" component={ListBooks} />
+        {/* <Redirect from='/' to='/books' /> */}
         <Route path="/members" component={Members} />
         <Route path="/" component={Dashboard} />
       </Switch>
